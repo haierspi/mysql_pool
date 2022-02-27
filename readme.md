@@ -29,7 +29,7 @@ if err !=nil{
 }
 ```
 
-3.构建gorm字段 与数据据对应
+3.构建gorm字段与数库字段对应
 > 注）必须实现 `TableName string()`方法 返回数据库表名 接口为 BaseFieldInterface
 ```
 type FieldTest struct {
