@@ -1,7 +1,8 @@
 #### mysql 连接池封装
 
 ### gorm 在线文档
-[gorm文档=>](https://learnku.com/docs/gorm/v2)
+[gorm仓库=>](https://github.com/jinzhu/gorm)
+[gorm文档=>](https://learnku.com/docs/gorm/v1)
 
 ### 依赖组件
 ```
