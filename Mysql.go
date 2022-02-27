@@ -58,7 +58,7 @@ type mysqlBuilder struct {
 	logDir string //日志保存目录(当isDebug为true时开启)
 }
 
-func (mb *mysqlBuilder) SetHost(host string) *mysqlBuilder {
+func (mb *mysqlBuilder) SetHost(host string) BuilderInterface {
 	mb.host = host
 	return mb
 }
@@ -67,7 +67,7 @@ func (mb *mysqlBuilder) GetHost() string {
 	return mb.host
 }
 
-func (mb *mysqlBuilder) SetPort(port int) *mysqlBuilder {
+func (mb *mysqlBuilder) SetPort(port int) BuilderInterface {
 	mb.port = port
 	return mb
 }
@@ -75,7 +75,7 @@ func (mb *mysqlBuilder) GetPort() int {
 	return mb.port
 }
 
-func (mb *mysqlBuilder) SetUser(user string) *mysqlBuilder {
+func (mb *mysqlBuilder) SetUser(user string) BuilderInterface {
 	mb.user = user
 	return mb
 }
@@ -84,7 +84,7 @@ func (mb *mysqlBuilder) GetUser() string {
 	return mb.user
 }
 
-func (mb *mysqlBuilder) SetPwd(pwd string) *mysqlBuilder {
+func (mb *mysqlBuilder) SetPwd(pwd string) BuilderInterface {
 	mb.pwd = pwd
 	return mb
 }
@@ -92,7 +92,7 @@ func (mb *mysqlBuilder) GetPwd() string {
 	return mb.pwd
 }
 
-func (mb *mysqlBuilder) SetDbName(dbName string) *mysqlBuilder {
+func (mb *mysqlBuilder) SetDbName(dbName string) BuilderInterface {
 	mb.dbName = dbName
 	return mb
 }
@@ -101,14 +101,14 @@ func (mb *mysqlBuilder) GetDbName() string {
 	return mb.dbName
 }
 
-func (mb *mysqlBuilder) SetChartSet(chartSet string) *mysqlBuilder {
+func (mb *mysqlBuilder) SetChartSet(chartSet string) BuilderInterface {
 	mb.chartSet = chartSet
 	return mb
 }
 func (mb *mysqlBuilder) GetChartSet() string {
 	return mb.chartSet
 }
-func (mb *mysqlBuilder) SetIsDebug(isDebug bool) *mysqlBuilder {
+func (mb *mysqlBuilder) SetIsDebug(isDebug bool) BuilderInterface {
 	mb.isDebug = isDebug
 	return mb
 }
@@ -117,7 +117,7 @@ func (mb *mysqlBuilder) GetIsDebug() bool {
 	return mb.isDebug
 }
 
-func (mb *mysqlBuilder) SetMaxIdleConns(maxIdleConns int) *mysqlBuilder {
+func (mb *mysqlBuilder) SetMaxIdleConns(maxIdleConns int) BuilderInterface {
 	mb.maxIdleConns = maxIdleConns
 	return mb
 }
@@ -126,7 +126,7 @@ func (mb *mysqlBuilder) GetMaxIdleConns() int {
 	return mb.maxIdleConns
 }
 
-func (mb *mysqlBuilder) SetMaxOpenConns(maxOpenConns int) *mysqlBuilder {
+func (mb *mysqlBuilder) SetMaxOpenConns(maxOpenConns int) BuilderInterface {
 	mb.maxOpenConns = maxOpenConns
 	return mb
 }
@@ -135,7 +135,7 @@ func (mb *mysqlBuilder) GetMaxOpenConns() int {
 	return mb.maxOpenConns
 }
 
-func (mb *mysqlBuilder) SetLogDir(logDir string) *mysqlBuilder {
+func (mb *mysqlBuilder) SetLogDir(logDir string) BuilderInterface {
 	mb.logDir = logDir
 	return mb
 }
