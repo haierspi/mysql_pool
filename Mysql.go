@@ -155,13 +155,13 @@ func NewMysqlPool() *mysqlPool {
 }
 
 type mysqlPool struct {
-	builder *mysqlBuilder
+	builder BuilderInterface
 
 	dns string
 	db  *gorm.DB
 }
 
-func (mp *mysqlPool) SetBuilder(builder *mysqlBuilder) {
+func (mp *mysqlPool) SetBuilder(builder BuilderInterface) {
 	mp.builder = builder
 }
 
@@ -187,18 +187,18 @@ func (mp *mysqlPool) initializationMysql() error {
 	maxIdleConns := 10
 	//设置与数据库的最大打开连接数
 	maxOpenConns := 10
-	if mp.builder.maxIdleConns > 0 {
-		maxIdleConns = mp.builder.maxIdleConns
+	if mp.builder.GetMaxIdleConns() > 0 {
+		maxIdleConns =  mp.builder.GetMaxIdleConns()
 	}
 
-	if mp.builder.maxOpenConns > 0 {
-		maxOpenConns = mp.builder.maxOpenConns
+	if mp.builder.GetMaxOpenConns() > 0 {
+		maxOpenConns = mp.builder.GetMaxOpenConns()
 	}
 	mp.db.DB().SetMaxIdleConns(maxIdleConns)
 	mp.db.DB().SetMaxOpenConns(maxOpenConns)
 	mp.db.SingularTable(true)
 
-	if mp.builder.isDebug {
+	if mp.builder.GetIsDebug() {
 		logPathDir := DEFULA_LOG_DIR
 		if len(strings.TrimSpace(mp.builder.GetLogDir())) > 0 {
 			logPathDir = strings.TrimSpace(mp.builder.GetLogDir())
