@@ -1,7 +1,7 @@
 #### mysql 连接池封装
 
 > v1.0+ 单库连接<br>
-> v2.0+ 支持多库链接, 使用多库时注意创建builderName 否则无法找到对应的数据库
+> v1.1+ 支持多库链接, 使用多库时注意创建builderName 否则无法找到对应的数据库
 
 ### gorm 在线文档
 [gorm仓库=>](https://github.com/jinzhu/gorm)
@@ -20,7 +20,7 @@ github.com/jinzhu/gorm v1.9.16
 go get -u gitee.com/tym_hmm/mysql_pool
 ```
 
-# v2.0+ 支持多连连接
+# v1.1+ 支持多连连接
 
 2.初始化
 ```
