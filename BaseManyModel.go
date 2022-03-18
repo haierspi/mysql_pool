@@ -1,19 +1,23 @@
 package Mysql
 
 import (
-	"errors"
-	"fmt"
-	gorm2 "github.com/jinzhu/gorm"
+	"github.com/jinzhu/gorm"
 	"math"
 	"reflect"
-	"regexp"
 )
 
-type BaseModel struct{}
+/**
+多表
+*/
+type BaseManyModel struct {
+	buildName string
+}
 
-func (b *BaseModel) GetDb() (*gorm2.DB, error) {
-	//return GetDb(Buder)
-	return nil, errors.New("单数据不在支持 请切换到BaseManyModel")
+func (b *BaseManyModel) GetDb() (*gorm.DB, error) {
+	return GetDb(b.buildName)
+}
+func (b *BaseManyModel) SetBuilderName(buildName string) {
+	b.buildName = buildName
 }
 
 /**
@@ -23,7 +27,7 @@ func (b *BaseModel) GetDb() (*gorm2.DB, error) {
 @param hasTable bool 返回时是否需字段前带表名
 @param aliasTable string 别名
 */
-func (b *BaseModel) getFieldTag(structs BaseFieldInterface, key string, hasTable bool, aliasTable string) []string {
+func (b *BaseManyModel) getFieldTag(structs BaseFieldInterface, key string, hasTable bool, aliasTable string) []string {
 	object := reflect.ValueOf(structs)
 	myref := object
 	typeOfType := myref.Type()
@@ -67,29 +71,17 @@ func (b *BaseModel) getFieldTag(structs BaseFieldInterface, key string, hasTable
 	return dbField
 }
 
-//查找gorm column
-func getColumn(Tag string) (string, error) {
-	columnREG := `column:(.*);?`
-	regx := regexp.MustCompile(columnREG)
-	s := regx.FindAllStringSubmatch(Tag, -1)
-	if len(s) == 0 {
-		return "", errors.New(fmt.Sprintf("column match error %s", columnREG))
-	}
-	column := s[0][1]
-	return column, nil
-}
-
 /**
 获取所有 tag
 */
-func (b *BaseModel) GetAllFieldTag(structs BaseFieldInterface) []string {
+func (b *BaseManyModel) GetAllFieldTag(structs BaseFieldInterface) []string {
 	return b.getFieldTag(structs, "", true, "")
 }
 
 /**
 获取指定tag
 */
-func (b *BaseModel) GetItemTag(structs BaseFieldInterface, key string) string {
+func (b *BaseManyModel) GetItemTag(structs BaseFieldInterface, key string) string {
 	item := b.getFieldTag(structs, key, true, "")
 	return item[0]
 }
@@ -97,12 +89,12 @@ func (b *BaseModel) GetItemTag(structs BaseFieldInterface, key string) string {
 /**
 获取指定标签 并转为别名
 */
-func (b *BaseModel) GetItemTagAliasTable(structs BaseFieldInterface, key string, AliasTable string) string {
+func (b *BaseManyModel) GetItemTagAliasTable(structs BaseFieldInterface, key string, AliasTable string) string {
 	item := b.getFieldTag(structs, key, true, AliasTable)
 	return item[0]
 }
 
-func (b *BaseModel) GetItemTagNotTable(structs BaseFieldInterface, key string) string {
+func (b *BaseManyModel) GetItemTagNotTable(structs BaseFieldInterface, key string) string {
 	item := b.getFieldTag(structs, key, false, "")
 	return item[0]
 }
@@ -113,7 +105,7 @@ func (b *BaseModel) GetItemTagNotTable(structs BaseFieldInterface, key string) s
 @param pageSize int 每页显示
 @param totalNum int 总记录数
 */
-func (b *BaseModel) Paginator(page int, pageSize int, totalNum int) int {
+func (b *BaseManyModel) Paginator(page int, pageSize int, totalNum int) int {
 	totalPages := int(math.Ceil(float64(totalNum) / float64(pageSize))) //page总数
 	return totalPages
 }

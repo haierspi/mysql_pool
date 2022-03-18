@@ -1,6 +1,8 @@
 package Mysql
 
 type BuilderInterface interface {
+	SetBuilderName(builderName string) BuilderInterface
+	GetBuildName() string
 	//地址
 	SetHost(host string) BuilderInterface
 	//获取地址
@@ -50,4 +52,5 @@ type BuilderInterface interface {
 	SetLogDir(logDir string) BuilderInterface
 	//获取日志保存目录
 	GetLogDir() string
+	GetHash() (string, error)
 }

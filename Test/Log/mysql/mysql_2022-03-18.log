@@ -1,0 +1,24 @@
+
+2022/03/18 16:38:21 logC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:27Error 1146: Table 'test.test' doesn't exist
+
+2022/03/18 16:38:21 sqlC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:2722.206msSELECT * FROM `test`  [] 0
+
+2022/03/18 16:42:02 logC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:27Error 1146: Table 'test.test' doesn't exist
+
+2022/03/18 16:42:02 sqlC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:2733.013msSELECT * FROM `test`  [] 0
+
+2022/03/18 16:46:17 logC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:27Error 1146: Table 'test.test' doesn't exist
+
+2022/03/18 16:46:17 sqlC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:2721.9736msSELECT * FROM `test`  [] 0
+
+2022/03/18 16:46:39 logC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:26Error 1146: Table 'test.test' doesn't exist
+
+2022/03/18 16:46:39 sqlC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:2622.883msSELECT * FROM `test`  [] 0
+
+2022/03/18 16:48:02 sqlC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:261.0192msSELECT * FROM `test`  [] 1
+
+2022/03/18 16:49:29 sqlC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:261.0178msSELECT * FROM `test`  [] 1
+
+2022/03/18 16:51:00 sqlC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/TestModel.go:261.0497msSELECT * FROM `test`  [] 1
+
+2022/03/18 16:51:00 sqlC:/Users/Lenovo/Desktop/aaaaa/mysql_pool/Test/Test2Model.go:26569.8µsSELECT * FROM `task_config`  [] 1
