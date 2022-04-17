@@ -79,6 +79,13 @@ func (b *BaseManyModel) GetAllFieldTag(structs BaseFieldInterface) []string {
 }
 
 /**
+获取所有 tag 不加table前缀
+*/
+func (b *BaseManyModel) GetAllFieldTagNotTable(structs BaseFieldInterface) []string {
+	return b.getFieldTag(structs, "", true, "")
+}
+
+/**
 获取指定tag
 */
 func (b *BaseManyModel) GetItemTag(structs BaseFieldInterface, key string) string {
